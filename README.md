@@ -5,20 +5,28 @@ Es un patrón simple para manejar los mensajes flash en la aplicación, añade h
 controlador (para fijar los mensajes de forma fácil) y un helper en la vista, que muestra
 los mensajes en popups al estilo growl (de mac os).
 
-Depende de las librería javascript jQuery con el plugin jGrowl.
+Depende de las librería javascript `jQuery` con el plugin `jGrowl`.
 
 Añade simples helpers para el controlador y la vista que simplifican el uso de los mensajes de notificación.
 Características y dependencias con javascript:
-  * El CSS va en las hojas de estilo del plugin de jQuery jGrowl (tiene su propio mecanismo de estilos),
-    por lo tanto para dar estilos a los mensajes hay que hacerlo según sus clases.
-  * Tampoco se genera HTML directamente en la vista (se genera indirectamente desde javascript, 
-    pero son mensajes flotantes), por lo tanto no hace falta hacer sitio en el layout para meter 
-    el contenido de los mensajes.
+  * El CSS va en las hojas de estilo del plugin de jQuery jGrowl (tiene su propio mecanismo de estilos), por lo tanto para dar estilos a los mensajes hay que hacerlo según sus clases.
+  * Tampoco se genera HTML directamente en la vista (se genera indirectamente desde javascript, pero son mensajes flotantes), por lo tanto no hace falta hacer sitio en el layout para meter el contenido de los mensajes.
 
+Instalación
+-----------------
+Instalar `jQuery`
+#### http://jquery.com/
+
+Instalar jQuery plugin 'jGrowl'
+#### http://plugins.jquery.com/project/jGrowl
+
+Copiar el código de este plugin en su carpeta `rails_app/vendor/plugins/jgrowl_flash_messages`
+#### cd rails_app/vendor/plugins
+#### git clone git@github.com:teimas/jgrowl_flash_messages.git
 
 
 Helpers del Controlador
-==============
+-----------------
 
 ### Ejemplos
     flash_success( message_or_options = {} )
@@ -29,15 +37,10 @@ Helpers del Controlador
 Sirven para fijar un mensaje de alguno de esos tipos (success, warning, error o notice).
 Se les puede pasar un String (mensaje) que se muestra directamente, 
 o un hash de opciones, que sirve para internacionalizar el mensaje:
-  * :scope => donde se busca el mensaje (igual que el scope de I18n.translate).
-            El scope por defecto es "common.flash_messages.#{msg_type}", donde msg_type
-            es 'success', 'warning', 'error' o 'notice' (según el método que se use).
-  * :action => clave del mensaje dentro del scope (por defecto es 'default').
-            En el fichero de internacionalización debe poner al menos un texto para 
-            "common.flash_messages.#{msg_type}.default" (para cada msg_type).
-  * :key => clave del mensaje completa (se forma automáticamente como scope.action).
-            Si se le da algún valor, :scope y :action serán ignorados.
-  * El resto de opciones se usan para interpolación como en el método I18n.translate
+  * :scope => donde se busca el mensaje (igual que el scope de I18n.translate). El scope por defecto es "common.flash_messages.#{msg_type}", donde msg_type es 'success', 'warning', 'error' o 'notice' (según el método que se use).
+  * :action => clave del mensaje dentro del scope (por defecto es 'default'). En el fichero de internacionalización debe poner al menos un texto para "common.flash_messages.#{msg_type}.default" (para cada msg_type).
+  * :key => clave del mensaje completa (se forma automáticamente como scope.action). Si se le da algún valor, :scope y :action serán ignorados.
+  * El resto de opciones se usan para interpolación como en el método `I18n.translate`
 
 ### Ejemplos:
     flash_success
@@ -57,7 +60,7 @@ o un hash de opciones, que sirve para internacionalizar el mensaje:
 
 
 Helpers de la Vista
-==============
+-----------------
 
     render_flash_messages(options={})
     
@@ -76,7 +79,7 @@ de las cuales se pone closerTemplate con un mensaje internacionalizado por defec
 
 
 AJAX y JavaScript:
-==============
+-----------------
 
 También se pueden mostrar los mensajes desde el controlador en una acción ajax, utilizando
 el helper show_flash_messages, que hace lo mismo que render_flash_messages, pero para ajax:
