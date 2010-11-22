@@ -9,20 +9,19 @@ Depende de las librería javascript `jQuery` con el plugin `jGrowl`.
 
 Añade simples helpers para el controlador y la vista que simplifican el uso de los mensajes de notificación.
 Características y dependencias con javascript:
-  * El CSS va en las hojas de estilo del plugin de jQuery jGrowl (tiene su propio mecanismo de estilos), por lo tanto para dar estilos a los mensajes hay que hacerlo según sus clases.
-  * Tampoco se genera HTML directamente en la vista (se genera indirectamente desde javascript, pero son mensajes flotantes), por lo tanto no hace falta hacer sitio en el layout para meter el contenido de los mensajes.
+
+  * __El CSS__ va en las hojas de estilo del plugin de jQuery jGrowl (tiene su propio mecanismo de estilos), por lo tanto para dar estilos a los mensajes hay que hacerlo según sus clases.
+  * __Tampoco se genera HTML__ directamente en la vista (se genera indirectamente desde javascript, pero son mensajes flotantes), por lo tanto no hace falta hacer sitio en el layout para meter el contenido de los mensajes.
 
 Instalación
 -----------------
-Instalar `jQuery`
-#### http://jquery.com/
+Instalar `jQuery` [](http://jquery.com/)
 
-Instalar jQuery plugin 'jGrowl'
-#### http://plugins.jquery.com/project/jGrowl
+Instalar jQuery plugin `jGrowl` [](http://plugins.jquery.com/project/jGrowl)
 
 Copiar el código de este plugin en su carpeta `rails_app/vendor/plugins/jgrowl_flash_messages`
-#### cd rails_app/vendor/plugins
-#### git clone git@github.com:teimas/jgrowl_flash_messages.git
+    cd rails_app/vendor/plugins
+    git clone git@github.com:teimas/jgrowl_flash_messages.git
 
 
 Helpers del Controlador
@@ -37,6 +36,7 @@ Helpers del Controlador
 Sirven para fijar un mensaje de alguno de esos tipos (success, warning, error o notice).
 Se les puede pasar un String (mensaje) que se muestra directamente, 
 o un hash de opciones, que sirve para internacionalizar el mensaje:
+
   * :scope => donde se busca el mensaje (igual que el scope de I18n.translate). El scope por defecto es "common.flash_messages.#{msg_type}", donde msg_type es 'success', 'warning', 'error' o 'notice' (según el método que se use).
   * :action => clave del mensaje dentro del scope (por defecto es 'default'). En el fichero de internacionalización debe poner al menos un texto para "common.flash_messages.#{msg_type}.default" (para cada msg_type).
   * :key => clave del mensaje completa (se forma automáticamente como scope.action). Si se le da algún valor, :scope y :action serán ignorados.
