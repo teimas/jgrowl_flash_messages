@@ -15,9 +15,9 @@ Características y dependencias con javascript:
 
 Instalación
 -----------------
-Instalar `jQuery` [](http://jquery.com/)
+Instalar `jQuery`: [http://jquery.com/](http://jquery.com/)
 
-Instalar jQuery plugin `jGrowl` [](http://plugins.jquery.com/project/jGrowl)
+Instalar jQuery plugin `jGrowl`: [http://plugins.jquery.com/project/jGrowl](http://plugins.jquery.com/project/jGrowl)
 
 Copiar el código de este plugin en su carpeta `rails_app/vendor/plugins/jgrowl_flash_messages`
     cd rails_app/vendor/plugins
